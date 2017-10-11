@@ -21,6 +21,33 @@ end
 
 # Let's do this ...
 
+# ## USERS
+
+# puts "Re-creating Creating Users ..."
+
+# User.destroy_all
+
+# user1.users.create!({
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,
+#   password: 1234
+# })
+
+# user2.users.create!({
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,
+#   password: 1234
+# })
+
+# user3.users.create!({
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,
+#   password: 1234
+# })
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
