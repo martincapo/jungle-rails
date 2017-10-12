@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # User register
   resource :users, only: [:create, :new]
   # User login
-  resource :session, only: [:create, :new, :destroy]
+  resource :sessions, only: [:create, :new, :destroy]
 
   resource :cart, only: [:show] do
     put    :add_item
