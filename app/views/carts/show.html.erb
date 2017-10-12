@@ -1,8 +1,11 @@
+
 <section class="cart-show">
 
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+
+<% if cart.length > 0 %>
 
   <div class="panel panel-default items">
     <table class="table table-bordered">
@@ -19,6 +22,7 @@
         <% cart.each do |product_id, details| %>
           <%= render 'item', product_id: product_id, details: details %>
         <% end %>
+
       </tbody>
       <tfoot>
         <tr>
@@ -32,7 +36,6 @@
       </tfoot>
     </table>
   </div>
-
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -46,8 +49,19 @@
           data-email="kvirani@gmail.com"
           data-currency="cad">
         </script>
+            <% console %>
+
       <% end %>
     </div>
   </div>
+
+<% else %>
+  <div class="alert alert-danger">
+    <h3>Your Shopping Cart is empty! </h3>
+  <div>
+  </br>
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+
+<% end %>
 
 </section>
