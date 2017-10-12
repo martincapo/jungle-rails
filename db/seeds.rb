@@ -23,30 +23,19 @@ end
 
 # ## USERS
 
-# puts "Re-creating Creating Users ..."
+puts "Re-creating Creating Users ..."
 
-# User.destroy_all
+User.destroy_all
 
-# user1.users.create!({
-#   first_name: Faker::Name.first_name,
-#   last_name: Faker::Name.last_name,
-#   email: Faker::Internet.email,
-#   password: 1234
-# })
+10.times do
+  User.create!({
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: '1234'
+  })
+end
 
-# user2.users.create!({
-#   first_name: Faker::Name.first_name,
-#   last_name: Faker::Name.last_name,
-#   email: Faker::Internet.email,
-#   password: 1234
-# })
-
-# user3.users.create!({
-#   first_name: Faker::Name.first_name,
-#   last_name: Faker::Name.last_name,
-#   email: Faker::Internet.email,
-#   password: 1234
-# })
 
 ## CATEGORIES
 
@@ -157,6 +146,33 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 0,
   price: 2_483.75
+})
+
+# REVIEWS
+
+puts "Re-creating Products ..."
+
+Review.destroy_all
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 5
+})
+
+Review.create!({
+  product_id: 2,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 4
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 2,
+  description: Faker::Hipster.paragraph(4),
+  rating: 3
 })
 
 
