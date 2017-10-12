@@ -4,11 +4,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
 
     if order.valid?
+      UserMailer.confirm_order_email(order).deliver_later
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
@@ -20,6 +22,7 @@ class OrdersController < ApplicationController
   end
 
   private
+
 
   def empty_cart!
     # empty hash means no products in cart :)
