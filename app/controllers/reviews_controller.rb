@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     )
 
     if @review.save
-      redirect_to :root, notice: 'Review created!'
+      redirect_to :back, notice: 'Review created!'
     end
   end
 end
