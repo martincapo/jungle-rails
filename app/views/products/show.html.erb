@@ -27,7 +27,6 @@
     </div>
 
 <% if current_user %>
-
     <div class="row">
       <div class="col-sm-7 col-sm-offset-5">
       <%= form_for [@product, Review.new] do |form| %>
@@ -50,7 +49,6 @@
 
         <div class="form-group col-sm-offset-10">
           <%= select_tag :rating, options_for_select([nil,1,2,3,4,5]) %>
-
           <%= form.submit 'Submit', class: 'btn btn-primary' %>
         </div>
         <hr/>
@@ -58,7 +56,6 @@
       <% end %>
     </div>
     </div>
-
 <% end %>
 
     <div class="row">
