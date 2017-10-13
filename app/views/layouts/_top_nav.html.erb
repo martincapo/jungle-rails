@@ -37,13 +37,14 @@
           </a>
           <ul class="dropdown-menu">
             <li>
+              <div class="col-sm-3">
               <%= form_tag '/sessions' do %>
 
                 Email: <%= text_field_tag :email %>
                 Password: <%= password_field_tag :password %>
                 <%= submit_tag "LogIn" %>
-
               <% end %>
+              </div>
             </li>
           </ul>
        </li>
