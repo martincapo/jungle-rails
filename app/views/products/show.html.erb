@@ -68,7 +68,14 @@
           <dt><%= review.rating %></dt>
           <dd><%=  username %></dd>
           <dd><%= review.description %></dd>
+
+      <% if review.user_id == current_user.id %>
+          <dd>
+            <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></dd>
+      <% end %>
+
         </dl>
+
       <% end %>
       </div>
     </div>

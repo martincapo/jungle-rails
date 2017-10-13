@@ -1,14 +1,13 @@
 class ReviewsController < ApplicationController
-  before_filter :require_login
+
+  before_action :require_login
 
   def create
     @product = Product.find(params[:product_id])
-    # after @review has been initialized, but before calling .save on it:
-    @review.user = current_user
 
     @review = Review.new(
       product_id: @product[:id],
-      user_id: @review.user,
+      user_id: current_user.id,
       description: params[:review][:description],
       rating: params[:rating]
     )
@@ -17,6 +16,13 @@ class ReviewsController < ApplicationController
       redirect_to :back, notice: 'Review created!'
     end
   end
+
+  def destroy
+    @review = Review.find params[:id]
+    @review.destroy
+    redirect_to :back, notice: 'Review deleted!'
+  end
+
 
   private
 
