@@ -48,11 +48,12 @@
           <%= form.text_area :description, class: 'form-control' %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-offset-10">
           <%= select_tag :rating, options_for_select([nil,1,2,3,4,5]) %>
 
-          <%= form.submit 'Rate', class: 'btn btn-primary' %>
+          <%= form.submit 'Submit', class: 'btn btn-primary' %>
         </div>
+        <hr/>
 
       <% end %>
     </div>
@@ -61,20 +62,27 @@
 <% end %>
 
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-4">
+      <div class="col-sm-7 col-sm-offset-5">
       <% @reviews.each do |review| %>
       <% username = User.find(review.user_id).first_name + " " + User.find(review.user_id).last_name %>
-        <dl class="dl-horizontal">
-          <dt><%= review.rating %></dt>
-          <dd><%=  username %></dd>
-          <dd><%= review.description %></dd>
 
-      <% if review.user_id == current_user.id %>
-          <dd>
-            <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></dd>
-      <% end %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="col-sm-6 col-md-4">Rate : <%= review.rating %> / 5</div>
+            <div >Name : <%=  username %></div>
+          </div>
+          <div class="panel-body">
+            <%= review.description %>
 
-        </dl>
+        <% if review.user_id == session[:user_id] %>
+            <div class="col-sm-offset-11">
+              <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+        <% end %>
+
+          </div>
+
+        </div>
 
       <% end %>
       </div>
