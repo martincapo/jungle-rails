@@ -21,12 +21,12 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     visit root_path
     page.first('.product').find_link('Details').click
 
-    expect(page).to have_content "Product Reviews"
   # DEBUG
+    sleep 5
     save_screenshot
 
   # VERIFY
-    puts page.html
+    expect(page).to have_content "Product Reviews"
 
   end
 end
