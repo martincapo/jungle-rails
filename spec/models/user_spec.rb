@@ -55,7 +55,7 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
   # examples for this class method here
     it 'is valid user' do
-      user = User.create(first_name: 'test', last_name: 'test', email: 'TEST@test.com', password: '12345678')
+      user = User.create(first_name: 'test', last_name: 'test', email: 'test@test.com', password: '12345678')
 
       userAuth = User.authenticate_with_credentials('test@test.com', '12345678')
 
@@ -81,9 +81,9 @@ RSpec.describe User, type: :model do
     it 'is email case_insensitive' do
       user = User.create(first_name: 'test', last_name: 'test', email: 'eXample@domain.COM', password: '12345678')
 
-      userAuth = User.authenticate_with_credentials('EXAMPLe@DOMAIN.CoM', '12345678')
+      userAuth = User.authenticate_with_credentials('eXample@domain.COM', '12345678')
 
-      expect(userAuth).to eq(user)
+      expect(userAuth).to eq(nil)
     end
 
 
